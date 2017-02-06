@@ -92,7 +92,7 @@ public class SparkTPCDSWorkloadGenerator {
 		long postLoad = System.currentTimeMillis();
 
 		// Run the query
-		Row[] rows = gen.sqlContext.sql(q.queryText).collect();
+		Row[] rows = gen.sqlContext.sql(q.queryText).collectAsList();
 		
 		// Print the output rows
 		for (Row r : rows) {
