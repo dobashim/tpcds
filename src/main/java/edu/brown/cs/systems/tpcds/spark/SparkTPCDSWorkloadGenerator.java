@@ -2,6 +2,7 @@ package edu.brown.cs.systems.tpcds.spark;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
@@ -92,7 +93,7 @@ public class SparkTPCDSWorkloadGenerator {
 		long postLoad = System.currentTimeMillis();
 
 		// Run the query
-		Row[] rows = gen.sqlContext.sql(q.queryText).collectAsList();
+		List<Row> rows = gen.sqlContext.sql(q.queryText).collectAsList();
 		
 		// Print the output rows
 		for (Row r : rows) {
